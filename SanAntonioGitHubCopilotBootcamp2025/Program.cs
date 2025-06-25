@@ -33,6 +33,13 @@ app.MapGet("/weatherforecast", () =>
     })
     .WithName("GetWeatherForecast");
 
+app.MapGet("/willrain", () =>
+{
+    // Simulate rain prediction
+    var willRain = Random.Shared.Next(2) == 0 ? "Yes, it will rain." : "No, it will not rain.";
+    return new { WillRain = willRain };
+});
+
 app.Run();
 
 record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
